@@ -29,3 +29,6 @@ RUN wget -qO - http://research.cs.wisc.edu/htcondor/debian/HTCondor-Release.gpg.
 
 # update repository metadata
 RUN apt-get update
+
+# install git
+RUN apt-get --assume-yes git-all
