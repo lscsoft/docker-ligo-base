@@ -16,9 +16,19 @@ RUN yum makecache
 # configure extra repositories
 RUN yum -y install lscsoft-backports-config \
       lscsoft-epel-config \
-      lscsoft-grid-config \
-      lscsoft-ius-config
+      lscsoft-grid-config
 
 # update metadata
 RUN yum clean all
 RUN yum makecache
+
+# install "Development Tools" yumgroup
+RUN yum groups mark convert
+RUN yum -y groups install "Development Tools"
+
+# enable ius repository
+RUN yum -y install lscsoft-ius-config
+
+# switch to ius git
+RUN yum -y remove git
+RUN yum -y install git2u-all
