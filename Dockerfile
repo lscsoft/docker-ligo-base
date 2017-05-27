@@ -31,4 +31,4 @@ RUN wget -qO - http://research.cs.wisc.edu/htcondor/debian/HTCondor-Release.gpg.
 RUN apt-get update
 
 # install git
-RUN apt-get --assume-yes git-all
+RUN apt-get --assume-yes install git-all
