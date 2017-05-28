@@ -2,7 +2,7 @@ FROM debian:jessie
 
 LABEL name="LIGO Base Debian Jessie" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170527"
+      date="20170528"
 
 # non-interactive debian installation
 ENV DEBIAN_FRONTEND noninteractive
@@ -32,4 +32,4 @@ RUN wget -qO - http://research.cs.wisc.edu/htcondor/debian/HTCondor-Release.gpg.
 RUN apt-get update
 
 # install git
-RUN apt-get --assume-yes install git-all
+RUN apt-get --assume-yes install git
