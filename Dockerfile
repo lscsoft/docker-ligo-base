@@ -2,7 +2,7 @@ FROM centos:centos7
 
 LABEL name="LIGO Base Enterprise Linux 7" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170527"
+      date="20170528"
 
 # download and install lscsoft repository
 RUN rpm -ivh http://software.ligo.org/lscsoft/scientific/7/x86_64/production/lscsoft-production-config-1.3-1.el7.noarch.rpm
@@ -32,4 +32,4 @@ RUN yum -y install lscsoft-ius-config
 
 # switch to ius git
 RUN yum -y remove git
-RUN yum -y install git2u-all
+RUN yum -y install git2u
