@@ -2,7 +2,8 @@ FROM debian:stretch
 
 LABEL name="LIGO Base Debian Stretch" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170528"
+      date="20170520" \
+      support="Best Effort"
 
 # non-interactive debian installation
 ENV DEBIAN_FRONTEND noninteractive
