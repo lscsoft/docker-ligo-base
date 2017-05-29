@@ -2,7 +2,8 @@ FROM debian:jessie
 
 LABEL name="LIGO Base Debian Jessie" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170528"
+      date="20170529" \
+      support="Reference Platform"
 
 # non-interactive debian installation
 ENV DEBIAN_FRONTEND noninteractive
