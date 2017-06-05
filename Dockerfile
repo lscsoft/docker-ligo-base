@@ -2,7 +2,7 @@ FROM debian:jessie
 
 LABEL name="LIGO Base Debian Jessie" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170530" \
+      date="20170605" \
       support="Reference Platform"
 
 # ensure non-interactive debian installation
@@ -19,4 +19,5 @@ RUN apt-key adv --keyserver pgp.mit.edu --recv-key 8325FECB83821E31D3582A69CE050
 RUN apt-key adv --keyserver pgp.mit.edu --recv-key 4B9D355DF3674E0E272D2E0A973FC7D2670079F6
 
 # Setup a working bash shell
-RUN apt-get update && apt-get install bash-completion
+RUN apt-get update && apt-get install bash-completion && \
+      rm -rf /var/lib/apt/lists/*
