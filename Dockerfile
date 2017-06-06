@@ -11,6 +11,9 @@ RUN rpm -ivh http://software.ligo.org/lscsoft/scientific/7/x86_64/production/lsc
 # download and install osg repository
 RUN rpm -ivh http://repo.grid.iu.edu/osg/3.3/osg-3.3-el7-release-latest.rpm
 
+# configure upstream git-lfs repository
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash
+
 # initialise metadata
 RUN yum clean all
 RUN yum makecache
