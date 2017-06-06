@@ -2,7 +2,7 @@ FROM centos:centos7
 
 LABEL name="LIGO Base Enterprise Linux 7" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170529" \
+      date="20170606" \
       support="Reference Platform"
 
 # download and install lscsoft repository
@@ -18,19 +18,8 @@ RUN yum makecache
 # configure extra repositories
 RUN yum -y install lscsoft-backports-config \
       lscsoft-epel-config \
-      lscsoft-grid-config
+      lscsoft-grid-config \
+      lscsoft-ius-config
 
-# update metadata
+# clear yum cache
 RUN yum clean all
-RUN yum makecache
-
-# install "Development Tools" yumgroup
-RUN yum groups mark convert
-RUN yum -y groups install "Development Tools"
-
-# enable ius repository
-RUN yum -y install lscsoft-ius-config
-
-# switch to ius git
-RUN yum -y remove git
-RUN yum -y install git2u
