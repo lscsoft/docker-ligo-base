@@ -2,7 +2,7 @@ FROM centos:centos7
 
 LABEL name="LIGO Base Enterprise Linux 7" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170606" \
+      date="20170607" \
       support="Reference Platform"
 
 # download and install lscsoft repository
@@ -24,5 +24,6 @@ RUN yum -y install lscsoft-backports-config \
       lscsoft-grid-config \
       lscsoft-ius-config
 
-# clear yum cache
-RUN yum clean all
+# setup a working shell
+RUN yum -y install bash-completion && \
+      yum clean all
