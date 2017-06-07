@@ -15,8 +15,7 @@ RUN rpm -ivh http://repo.grid.iu.edu/osg/3.3/osg-3.3-el7-release-latest.rpm
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash
 
 # initialise metadata
-RUN yum clean all
-RUN yum makecache
+RUN yum clean all && yum makecache
 
 # configure extra repositories
 RUN yum -y install lscsoft-backports-config \
