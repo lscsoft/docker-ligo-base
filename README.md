@@ -5,5 +5,5 @@ should not be used as a build environment.
 
 Examples of derived containers:
 
-* [LIGO Software Environment](https://hub.docker.com/r/ligo/lscsoft-all/)
+* [LIGO Software Environment](https://hub.docker.com/r/ligo/software/)
 * [LALSuite Build Environment](https://hub.docker.com/r/ligo/lalsuite-dev/)
