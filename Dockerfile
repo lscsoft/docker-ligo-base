@@ -2,14 +2,14 @@ FROM centos:centos7
 
 LABEL name="LIGO Base Enterprise Linux 7" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170607" \
+      date="20171120" \
       support="Reference Platform"
 
 # download and install lscsoft repository
 RUN rpm -ivh http://software.ligo.org/lscsoft/scientific/7/x86_64/production/lscsoft-production-config-1.3-1.el7.noarch.rpm
 
 # download and install osg repository
-RUN rpm -ivh http://repo.grid.iu.edu/osg/3.3/osg-3.3-el7-release-latest.rpm
+RUN rpm -ivh http://repo.grid.iu.edu/osg/3.4/osg-3.4-el7-release-latest.rpm
 
 # configure upstream git-lfs repository
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash
