@@ -2,7 +2,7 @@ FROM centos:centos7
 
 LABEL name="LIGO Base Enterprise Linux 7" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20171120" \
+      date="20180106" \
       support="Reference Platform"
 
 # download and install lscsoft repository
@@ -18,7 +18,8 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.r
 RUN yum clean all && yum makecache
 
 # configure extra repositories
-RUN yum -y install lscsoft-backports-config \
+RUN yum -y install yum-priorities \
+      lscsoft-backports-config \
       lscsoft-epel-config \
       lscsoft-grid-config \
       lscsoft-ius-config
