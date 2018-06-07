@@ -2,30 +2,43 @@ FROM debian:stretch
 
 LABEL name="LIGO Base Debian Stretch" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20170606" \
-      support="Best Effort"
+      date="20180607" \
+      support="Upcoming Reference Platform"
 
 # ensure non-interactive debian installation
 ENV DEBIAN_FRONTEND noninteractive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
+# support https repositories
 RUN apt-get update && \
-      apt-get install --assume-yes apt-transport-https \
-        apt-utils \
-        gnupg && \
-      rm -rf /var/lib/apt/lists/*
+    apt-get --assume-yes install \
+      apt-transport-https \
+      apt-utils \
+      bash-completion \
+      curl \
+      lsb-release \
+      wget && \
+    apt-get clean
 
-# Add required repositories
-#RUN echo "deb http://research.cs.wisc.edu/htcondor/debian/stable stretch contrib" > /etc/apt/sources.list.d/condor.list
-RUN echo "deb http://software.ligo.org/gridtools/debian stretch main" > /etc/apt/sources.list.d/gridtools.list
-RUN echo "deb http://software.ligo.org/lscsoft/debian stretch contrib" > /etc/apt/sources.list.d/lscsoft.list
-RUN echo "deb https://packagecloud.io/github/git-lfs/debian stretch main" > /etc/apt/sources.list.d/git-lfs.list
+# add main CVMFS repository
+RUN wget https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest_all.deb && \
+    dpkg -i cvmfs-release-latest_all.deb && \
+    rm -f cvmfs-release-latest_all.deb
 
-# add LIGO, HTCondor, and git-lfs signing keys
-RUN apt-key adv --keyserver pgp.mit.edu --recv-key 8325FECB83821E31D3582A69CE050D236DB6FA3F
-RUN apt-key adv --keyserver pgp.mit.edu --recv-key 4B9D355DF3674E0E272D2E0A973FC7D2670079F6
-RUN apt-key adv --keyserver pgp.mit.edu --recv-key 418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB
+# add CVMFS contrib repository (OSG config and X509 helper)
+RUN wget https://ecsft.cern.ch/dist/cvmfs/cvmfs-contrib-release/cvmfs-contrib-release-latest_all.deb && \
+    dpkg -i cvmfs-contrib-release-latest_all.deb && \
+    rm -f cvmfs-contrib-release-latest_all.deb
 
-# Setup a working bash shell
-RUN apt-get update && apt-get install bash-completion && \
-      rm -rf /var/lib/apt/lists/*
+# add git-lfs repo
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+
+# add HTCondor repo when it is available
+
+# Add other repos
+RUN wget http://software.ligo.org/lscsoft/debian/pool/contrib/l/lscsoft-archive-keyring/lscsoft-archive-keyring_2016.06.20-2_all.deb && \
+    dpkg -i lscsoft-archive-keyring_2016.06.20-2_all.deb && \
+    rm -f lscsoft-archive-keyring_2016.06.20-2_all.deb
+
+RUN echo "deb http://software.ligo.org/gridtools/debian stretch main" > /etc/apt/sources.list.d/gridtools.list && \
+    echo "deb http://software.ligo.org/lscsoft/debian stretch contrib" > /etc/apt/sources.list.d/lscsoft.list
