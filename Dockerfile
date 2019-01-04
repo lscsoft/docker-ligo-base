@@ -1,8 +1,8 @@
-FROM debian:stretch
+FROM debian:buster
 
-LABEL name="LIGO Base Debian Stretch" \
+LABEL name="LIGO Base Debian Buster" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20180607" \
+      date="20190104" \
       support="Upcoming Reference Platform"
 
 # ensure non-interactive debian installation
@@ -17,7 +17,8 @@ RUN apt-get update && \
       bash-completion \
       curl \
       lsb-release \
-      wget && \
+      wget \
+      gnupg && \
     apt-get clean
 
 # add main CVMFS repository
@@ -40,5 +41,5 @@ RUN wget http://software.ligo.org/lscsoft/debian/pool/contrib/l/lscsoft-archive-
     dpkg -i lscsoft-archive-keyring_2016.06.20-2_all.deb && \
     rm -f lscsoft-archive-keyring_2016.06.20-2_all.deb
 
-RUN echo "deb http://software.ligo.org/gridtools/debian stretch main" > /etc/apt/sources.list.d/gridtools.list && \
-    echo "deb http://software.ligo.org/lscsoft/debian stretch contrib" > /etc/apt/sources.list.d/lscsoft.list
+RUN echo "deb http://software.ligo.org/gridtools/debian buster main" > /etc/apt/sources.list.d/gridtools.list && \
+    echo "deb http://software.ligo.org/lscsoft/debian buster contrib" > /etc/apt/sources.list.d/lscsoft.list
