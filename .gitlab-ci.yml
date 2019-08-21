@@ -1,8 +1,5 @@
 image: docker:latest
 
-variables:
-  TAG: el7
-
 stages:
   - docker
 
@@ -10,5 +7,5 @@ docker:build:
   stage: docker
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build --pull -t $CI_REGISTRY_IMAGE:$TAG .
-    - docker push $CI_REGISTRY_IMAGE:$TAG
+    - docker build --pull -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
