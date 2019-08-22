@@ -24,4 +24,9 @@ rebuild:el7-production:
   trigger:
     project: docker/packaging
     branch: el7-production
-  
+
+rebuild:el7-production-staging:
+  stage: rebuild
+  trigger:
+    project: docker/packaging
+    branch: el7-production-staging
