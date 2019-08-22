@@ -2,7 +2,6 @@ FROM debian:stretch
 
 LABEL name="LIGO Base - Debian Stretch" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20190821" \
       support="Reference Platform"
 
 # ensure non-interactive debian installation
