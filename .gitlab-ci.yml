@@ -11,13 +11,19 @@ docker:build:
     - docker build --pull -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
 
+#
 # trigger rebuilds of downstream containers
+#
+
+# lalsuite-dev
 
 rebuild:lalsuite-dev:
   stage: rebuild
   trigger:
     project: docker/lalsuite-dev
     branch: el7
+
+# packaging
 
 rebuild:el7-production:
   stage: rebuild
