@@ -10,6 +10,9 @@ RUN rpm -ivh http://software.ligo.org/lscsoft/scientific/7/x86_64/production/l/l
     curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash && \
     yum clean all && yum makecache
 
+# fix git-lfs repository for scientific linux
+RUN sed -i s/scientific/el/g /etc/yum.repos.d/github_git-lfs.repo
+
 # install available updates
 RUN yum -y update
 
