@@ -2,6 +2,7 @@ image: docker:latest
 
 stages:
   - docker
+  - rebuild
 
 docker:build:
   stage: docker
@@ -9,3 +10,12 @@ docker:build:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build --pull -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+
+# trigger rebuilds of downstream containers
+
+rebuild:lalsuite-dev:
+  stage: rebuild
+  trigger:
+    project: docker/lalsuite-dev
+    branch: stretch
+  
