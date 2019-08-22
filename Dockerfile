@@ -2,7 +2,6 @@ FROM sl:7
 
 LABEL name="LIGO Base - Enterprise Linux 7" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20190822" \
       support="Reference Platform"
 
 # download and install standard repositories with LSCSoft Production enabled
