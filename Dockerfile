@@ -2,7 +2,7 @@ FROM sl:7
 
 LABEL name="LIGO Base - Enterprise Linux 7" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      date="20190821" \
+      date="20190822" \
       support="Reference Platform"
 
 # download and install standard repositories with LSCSoft Production enabled
@@ -10,6 +10,9 @@ RUN rpm -ivh http://software.ligo.org/lscsoft/scientific/7/x86_64/production/l/l
     rpm -ivh https://repo.opensciencegrid.org/osg/3.4/osg-3.4-el7-release-latest.rpm && \
     curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash && \
     yum clean all && yum makecache
+
+# install available updates
+RUN yum -y update
 
 # configure extra repositories
 RUN yum -y install \
