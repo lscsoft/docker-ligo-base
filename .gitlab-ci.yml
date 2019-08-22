@@ -18,4 +18,10 @@ rebuild:lalsuite-dev:
   trigger:
     project: docker/lalsuite-dev
     branch: el7
+
+rebuild:el7-production:
+  stage: rebuild
+  trigger:
+    project: docker/packaging
+    branch: el7-production
   
