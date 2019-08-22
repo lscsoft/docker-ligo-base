@@ -30,3 +30,9 @@ rebuild:el7-production-staging:
   trigger:
     project: docker/packaging
     branch: el7-production-staging
+
+rebuild:el7-testing:
+  stage: rebuild
+  trigger:
+    project: docker/packaging
+    branch: el7-testing
