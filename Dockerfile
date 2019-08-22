@@ -9,9 +9,11 @@ LABEL name="LIGO Base - Debian Stretch" \
 ENV DEBIAN_FRONTEND noninteractive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
+# install available updates
+RUN apt-get update && apt-get --assume-yes upgrade
+
 # support https repositories
-RUN apt-get update && \
-    apt-get --assume-yes install \
+RUN apt-get --assume-yes install \
       apt-transport-https \
       apt-utils \
       bash-completion \
