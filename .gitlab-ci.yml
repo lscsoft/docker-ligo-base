@@ -13,12 +13,15 @@ docker:build:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build --pull -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
-    # push to Docker Hub
-    - docker logout $CI_REGISTRY
-    - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
-    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME $REPOSITORY:$CI_COMMIT_REF_NAME
-    - docker push $REPOSITORY:$CI_COMMIT_REF_NAME
-    - docker logout
+    - |
+        # push to docker hub
+        if [[ $CI_PROJECT_NAMESPACE == 'docker' ]]; then
+          docker logout $CI_REGISTRY
+          docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
+          docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME $REPOSITORY:$CI_COMMIT_REF_NAME
+          docker push $REPOSITORY:$CI_COMMIT_REF_NAME
+          docker logout
+        fi
 
 #
 # trigger rebuilds of downstream containers
