@@ -36,3 +36,10 @@ rebuild:stretch-proposed:
   trigger:
     project: docker/packaging
     branch: stretch-proposed
+
+# ligo-ssh
+rebuild:ligo-ssh:
+  stage: rebuild
+  trigger:
+    project: docker/ligo-ssh
+    branch: stretch
