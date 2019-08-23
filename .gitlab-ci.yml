@@ -48,3 +48,11 @@ rebuild:el7-staging:
   trigger:
     project: docker/packaging
     branch: el7-staging
+
+# ligo-ssh
+
+rebuild:ligo-ssh:
+  stage: rebuild
+  trigger:
+    project: docker/ligo-ssh
+    branch: el7
