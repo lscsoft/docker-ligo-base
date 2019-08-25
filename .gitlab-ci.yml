@@ -31,6 +31,8 @@ docker:build:
 
 rebuild:lalsuite-dev:
   stage: rebuild
+  only:
+    - stretch@docker/base
   trigger:
     project: docker/lalsuite-dev
     branch: stretch
@@ -39,19 +41,26 @@ rebuild:lalsuite-dev:
 
 rebuild:stretch:
   stage: rebuild
+  only:
+    - stretch@docker/base
   trigger:
     project: docker/packaging
     branch: stretch
 
 rebuild:stretch-proposed:
   stage: rebuild
+  only:
+    - stretch@docker/base
   trigger:
     project: docker/packaging
     branch: stretch-proposed
 
 # ligo-ssh
+
 rebuild:ligo-ssh:
   stage: rebuild
+  only:
+    - stretch@docker/base
   trigger:
     project: docker/ligo-ssh
     branch: stretch
