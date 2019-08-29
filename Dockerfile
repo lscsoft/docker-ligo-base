@@ -1,4 +1,5 @@
-FROM sl:7
+# sl:7 has been updated to SL 7.7, use the digest of the previous release
+FROM sl@sha256:aba43907fb2fa664d5eb9daadd50034c38ea63a263bb7c97d1e683445e158caf
 
 LABEL name="LIGO Base - Enterprise Linux 7" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
