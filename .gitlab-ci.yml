@@ -29,54 +29,10 @@ docker:build:
 
 # lalsuite-dev
 
-rebuild:lalsuite-dev:
-  stage: rebuild
-  only:
-    - branches@docker/base
-  trigger:
-    project: docker/lalsuite-dev
-    branch: el7
-
-# packaging
-
-rebuild:el7-production:
-  stage: rebuild
-  only:
-    - branches@docker/base
-  trigger:
-    project: docker/packaging
-    branch: el7-production
-
-rebuild:el7-production-staging:
-  stage: rebuild
-  only:
-    - branches@docker/base
-  trigger:
-    project: docker/packaging
-    branch: el7-production-staging
-
-rebuild:el7-testing:
-  stage: rebuild
-  only:
-    - branches@docker/base
-  trigger:
-    project: docker/packaging
-    branch: el7-testing
-
-rebuild:el7-staging:
-  stage: rebuild
-  only:
-    - branches@docker/base
-  trigger:
-    project: docker/packaging
-    branch: el7-staging
-
-# ligo-ssh
-
-rebuild:ligo-ssh:
-  stage: rebuild
-  only:
-    - branches@docker/base
-  trigger:
-    project: docker/ligo-ssh
-    branch: el7
+#rebuild:lalsuite-dev:
+#  stage: rebuild
+#  only:
+#    - branches@docker/base
+#  trigger:
+#    project: docker/lalsuite-dev
+#    branch: conda
