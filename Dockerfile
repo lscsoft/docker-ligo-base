@@ -6,6 +6,7 @@ LABEL name="LIGO Base - Miniconda" \
 
 RUN conda update --yes conda && \
     conda config --system --prepend channels conda-forge && \
+    conda config --system --append channels lscsoft && \
     conda install --yes \
         conda-build \
         conda-forge-pinning \
