@@ -12,8 +12,8 @@ RUN echo 7.6 > /etc/yum/vars/slreleasever
 RUN echo exclude=python3* >> /etc/yum.repos.d/sl7-security.repo
 
 # download and install standard repositories with LSCSoft Production enabled
-RUN rpm -ivh http://software.ligo.org/lscsoft/scientific/7/x86_64/production/l/lscsoft-production-config-1.3-1.el7.noarch.rpm && \
-    rpm -ivh https://repo.opensciencegrid.org/osg/3.4/osg-3.4-el7-release-latest.rpm && \
+RUN yum -y install http://software.ligo.org/lscsoft/scientific/7/x86_64/production/l/lscsoft-production-config-1.3-1.el7.noarch.rpm && \
+    yum -y install  https://repo.opensciencegrid.org/osg/3.4/osg-3.4-el7-release-latest.rpm && \
     curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash && \
     yum clean all && yum makecache
 
