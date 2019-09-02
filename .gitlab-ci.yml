@@ -1,0 +1,23 @@
+image: docker:latest
+
+variables:
+  REPOSITORY: 'cgca/base'
+
+stages:
+  - docker
+
+docker:build:
+  stage: docker
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build --pull -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+    - docker logout $CI_REGISTRY
+    - |
+        # push to docker hub
+        if [[ $CI_PROJECT_NAMESPACE == 'docker' ]]; then
+          docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
+          docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME $REPOSITORY:$CI_COMMIT_REF_NAME
+          docker push $REPOSITORY:$CI_COMMIT_REF_NAME
+          docker logout
+        fi
