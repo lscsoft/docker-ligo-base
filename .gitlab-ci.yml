@@ -5,6 +5,7 @@ variables:
 
 stages:
   - docker
+  - rebuild
 
 docker:build:
   stage: docker
@@ -21,3 +22,17 @@ docker:build:
           docker push $BASE_REPOSITORY:$CI_COMMIT_REF_NAME
           docker logout
         fi
+
+#
+# trigger rebuilds of downstream containers
+#
+
+# lalsuite-dev
+
+rebuild:lalsuite-dev:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/lalsuite-dev
+    branch: el7-testing
