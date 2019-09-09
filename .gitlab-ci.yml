@@ -55,12 +55,12 @@ rebuild:stretch-proposed:
     project: docker/packaging
     branch: stretch-proposed
 
-# ligo-ssh
+# ssh container
 
-rebuild:ligo-ssh:
+rebuild:ssh:
   stage: rebuild
   only:
     - stretch@docker/base
   trigger:
-    project: docker/ligo-ssh
+    project: docker/ssh
     branch: stretch
