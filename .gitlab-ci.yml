@@ -1,7 +1,7 @@
 image: docker:latest
 
 variables:
-  BASE_REPOSITORY: 'cgca/base'
+  BASE_REPOSITORY: 'igwn/base'
 
 stages:
   - docker
