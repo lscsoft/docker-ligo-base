@@ -104,3 +104,24 @@ rebuild:ssh:
   trigger:
     project: docker/ssh
     branch: el7
+
+# software container
+
+rebuild:software:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/software
+    branch: el7
+
+# builder container
+
+rebuild:builder:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/builder
+    branch: el7
+
