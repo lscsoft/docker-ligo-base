@@ -64,3 +64,23 @@ rebuild:ssh:
   trigger:
     project: docker/ssh
     branch: stretch
+
+# software container
+
+rebuild:software:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/software
+    branch: stretch
+
+# builder container
+
+rebuild:builder:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/builder
+    branch: stretch
