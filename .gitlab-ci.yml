@@ -36,3 +36,13 @@ rebuild:lalsuite-dev:
   trigger:
     project: docker/lalsuite-dev
     branch: el7-testing
+
+# software
+
+rebuild:software:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/software
+    branch: el7-testing
