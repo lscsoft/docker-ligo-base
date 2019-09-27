@@ -36,3 +36,13 @@ rebuild:lalsuite-dev:
   trigger:
     project: docker/lalsuite-dev
     branch: stretch-proposed
+
+# software
+
+rebuild:software:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/software
+    branch: stretch-proposed
