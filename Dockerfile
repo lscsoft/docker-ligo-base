@@ -30,7 +30,7 @@ RUN yum -y install \
       bash-completion \
       yum-priorities \
       lscsoft-backports-config \
-      epel-release \
+      lscsoft-epel-config \
       lscsoft-grid-config \
       lscsoft-ius-config \
       lscsoft-testing-config && \
