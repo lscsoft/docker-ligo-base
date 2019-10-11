@@ -11,6 +11,14 @@ RUN yum -y install http://software.ligo.org/lscsoft/scientific/7/x86_64/producti
     curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash && \
     yum clean all && yum makecache
 
+# add WANdisco git repository
+RUN echo "[wandisco-git]" > /etc/yum.repos.d/wandisco-git.repo && \
+    echo "name=Wandisco GIT Repository" >> /etc/yum.repos.d/wandisco-git.repo && \
+    echo "baseurl=http://opensource.wandisco.com/centos/7/git/\$basearch/" >> /etc/yum.repos.d/wandisco-git.repo && \
+    echo "enabled=1" >> /etc/yum.repos.d/wandisco-git.repo && \
+    echo "gpgcheck=1" >> /etc/yum.repos.d/wandisco-git.repo && \
+    echo "gpgkey=http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco" >> /etc/yum.repos.d/wandisco-git.repo
+
 # fix git-lfs repository for scientific linux
 RUN sed -i s/scientific/el/g /etc/yum.repos.d/github_git-lfs.repo
 
@@ -23,6 +31,5 @@ RUN yum -y install \
       yum-priorities \
       lscsoft-backports-config \
       lscsoft-epel-config \
-      lscsoft-grid-config \
-      lscsoft-ius-config && \
+      lscsoft-grid-config && \
     yum clean all
