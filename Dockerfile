@@ -19,6 +19,14 @@ RUN echo "[lscsoft-backports-testing]" > /etc/yum.repos.d/lscsoft-backports-test
     echo "failovermethod = priority" >> /etc/yum.repos.d/lscsoft-backports-testing.repo && \
     echo "priority = 97" >> /etc/yum.repos.d/lscsoft-backports-testing.repo
 
+# add WANdisco git repository
+RUN echo "[wandisco-git]" > /etc/yum.repos.d/wandisco-git.repo && \
+    echo "name=Wandisco GIT Repository" >> /etc/yum.repos.d/wandisco-git.repo && \
+    echo "baseurl=http://opensource.wandisco.com/centos/7/git/\$basearch/" >> /etc/yum.repos.d/wandisco-git.repo && \
+    echo "enabled=1" >> /etc/yum.repos.d/wandisco-git.repo && \
+    echo "gpgcheck=1" >> /etc/yum.repos.d/wandisco-git.repo && \
+    echo "gpgkey=http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco" >> /etc/yum.repos.d/wandisco-git.repo
+
 # fix git-lfs repository for scientific linux
 RUN sed -i s/scientific/el/g /etc/yum.repos.d/github_git-lfs.repo
 
@@ -32,6 +40,5 @@ RUN yum -y install \
       lscsoft-backports-config \
       lscsoft-epel-config \
       lscsoft-grid-config \
-      lscsoft-ius-config \
       lscsoft-testing-config && \
     yum clean all
