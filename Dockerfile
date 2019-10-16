@@ -18,8 +18,7 @@ RUN apt-get --assume-yes install \
       bash-completion \
       curl \
       lsb-release \
-      wget && \
-    apt-get clean
+      wget
 
 # add main CVMFS repository
 RUN wget https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest_all.deb && \
@@ -34,7 +33,9 @@ RUN wget https://ecsft.cern.ch/dist/cvmfs/cvmfs-contrib-release/cvmfs-contrib-re
 # add git-lfs repo
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
 
-# add HTCondor repo when it is available
+# add HTCondor repo
+RUN wget -qO - https://research.cs.wisc.edu/htcondor/debian/HTCondor-Release.gpg.key | apt-key add - && \
+    echo "deb http://research.cs.wisc.edu/htcondor/debian/8.8/stretch stretch contrib" > /etc/apt/sources.list.d/htcondor.list
 
 # Add other repos
 RUN wget http://software.ligo.org/lscsoft/debian/pool/contrib/l/lscsoft-archive-keyring/lscsoft-archive-keyring_2016.06.20-2_all.deb && \
@@ -44,3 +45,5 @@ RUN wget http://software.ligo.org/lscsoft/debian/pool/contrib/l/lscsoft-archive-
 RUN echo "deb http://software.ligo.org/gridtools/debian stretch main" > /etc/apt/sources.list.d/gridtools.list && \
     echo "deb http://software.ligo.org/lscsoft/debian stretch contrib" > /etc/apt/sources.list.d/lscsoft.list && \
     echo "deb http://software.ligo.org/lscsoft/debian stretch-proposed contrib" > /etc/apt/sources.list.d/lscsoft-proposed.list
+
+RUN apt-get clean
