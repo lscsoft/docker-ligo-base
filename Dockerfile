@@ -11,8 +11,8 @@ RUN yum -y install http://software.ligo.org/lscsoft/scientific/7/x86_64/producti
 
 # add osg repository
 RUN echo "[osg]" > /etc/yum.repos.d/osg.repo && \
-    echo "name=OSG Software for Enterprise Linux 7 - $basearch" >> /etc/yum.repos.d/osg.repo && \
-    echo "baseurl=https://repo.opensciencegrid.org/osg/3.5/el7/release/\$basearch" >> /etc/yum.repos.d/osg.repo \
+    echo "name=OSG Software for Enterprise Linux 7 - \$basearch" >> /etc/yum.repos.d/osg.repo && \
+    echo "baseurl=https://repo.opensciencegrid.org/osg/3.5/el7/release/\$basearch" >> /etc/yum.repos.d/osg.repo && \
     echo "failovermethod=priority" >> /etc/yum.repos.d/osg.repo && \
     echo "priority=98" >> /etc/yum.repos.d/osg.repo && \
     echo "enabled=1" >> /etc/yum.repos.d/osg.repo && \
