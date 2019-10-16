@@ -7,9 +7,18 @@ LABEL name="LIGO Base - Enterprise Linux 7" \
 
 # download and install standard repositories with LSCSoft Production enabled
 RUN yum -y install http://software.ligo.org/lscsoft/scientific/7/x86_64/production/l/lscsoft-production-config-1.3-1.el7.noarch.rpm && \
-    yum -y install  https://repo.opensciencegrid.org/osg/3.4/osg-3.4-el7-release-latest.rpm && \
-    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash && \
-    yum clean all && yum makecache
+    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash
+
+# add osg repository
+RUN echo "[osg]" > /etc/yum.repos.d/osg.repo && \
+    echo "name=OSG Software for Enterprise Linux 7 - $basearch" >> /etc/yum.repos.d/osg.repo && \
+    echo "mirrorlist=https://repo.opensciencegrid.org/mirror/osg/3.5/el7/release/$basearch" >> /etc/yum.repos.d/osg.repo && \
+    echo "failovermethod=priority" >> /etc/yum.repos.d/osg.repo && \
+    echo "priority=98" >> /etc/yum.repos.d/osg.repo && \
+    echo "enabled=1" >> /etc/yum.repos.d/osg.repo && \
+    echo "gpgcheck=1" >> /etc/yum.repos.d/osg.repo && \
+    echo "gpgkey=http://repo.opensciencegrid.org/osg/3.5/RPM-GPG-KEY-OSG" >> /etc/yum.repos.d/osg.repo && \
+    echo "exclude=*condor*" >> /etc/yum.repos.d/osg.repo
 
 # add WANdisco git repository
 RUN echo "[wandisco-git]" > /etc/yum.repos.d/wandisco-git.repo && \
@@ -23,7 +32,7 @@ RUN echo "[wandisco-git]" > /etc/yum.repos.d/wandisco-git.repo && \
 RUN sed -i s/scientific/el/g /etc/yum.repos.d/github_git-lfs.repo
 
 # install available updates
-RUN yum -y update
+RUN yum clean all && yum makecache && yum -y update
 
 # configure extra repositories
 RUN yum -y install \
