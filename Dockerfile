@@ -40,9 +40,8 @@ RUN wget -qO - https://research.cs.wisc.edu/htcondor/debian/HTCondor-Release.gpg
 # Add other repos
 RUN wget http://software.ligo.org/lscsoft/debian/pool/contrib/l/lscsoft-archive-keyring/lscsoft-archive-keyring_2016.06.20-2_all.deb && \
     dpkg -i lscsoft-archive-keyring_2016.06.20-2_all.deb && \
-    rm -f lscsoft-archive-keyring_2016.06.20-2_all.deb
-
-RUN echo "deb http://software.ligo.org/gridtools/debian stretch main" > /etc/apt/sources.list.d/gridtools.list && \
+    rm -f lscsoft-archive-keyring_2016.06.20-2_all.deb && \
+    echo "deb http://software.ligo.org/gridtools/debian stretch main" > /etc/apt/sources.list.d/gridtools.list && \
     echo "deb http://software.ligo.org/lscsoft/debian stretch contrib" > /etc/apt/sources.list.d/lscsoft.list && \
     echo "deb http://software.ligo.org/lscsoft/debian stretch-proposed contrib" > /etc/apt/sources.list.d/lscsoft-proposed.list
 
