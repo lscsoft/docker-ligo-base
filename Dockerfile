@@ -1,4 +1,3 @@
-# sl:7 has been updated to SL 7.7, use the digest of the previous release
 FROM sl:7
 
 LABEL name="LIGO Base - Enterprise Linux 7" \
