@@ -5,4 +5,4 @@ LABEL name="LIGO Base - Miniconda" \
       support="Best Effort"
 
 RUN /opt/conda/bin/conda config --system --prepend channels conda-forge && \
-    /opt/conda/bin/conda config --system --append channels lscsoft
+    /opt/conda/bin/conda config --system --append channels igwn
