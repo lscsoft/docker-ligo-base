@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # install available updates
-RUN apt-get update && apt-get --assume-yes upgrade
+RUN apt-get update && apt-get --assume-yes upgrade && apt-get clean
 
 # support https repositories
 RUN apt-get --assume-yes install \
@@ -18,7 +18,8 @@ RUN apt-get --assume-yes install \
       bash-completion \
       curl \
       lsb-release \
-      wget
+      wget && \
+    apt-get clean
 
 # add main CVMFS repository
 RUN wget https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest_all.deb && \
@@ -31,7 +32,8 @@ RUN wget https://ecsft.cern.ch/dist/cvmfs/cvmfs-contrib-release/cvmfs-contrib-re
     rm -f cvmfs-contrib-release-latest_all.deb
 
 # add git-lfs repo
-RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+    apt-get clean
 
 # add HTCondor repo
 RUN wget -qO - https://research.cs.wisc.edu/htcondor/debian/HTCondor-Release.gpg.key | apt-key add - && \
@@ -45,5 +47,3 @@ RUN wget http://software.ligo.org/lscsoft/debian/pool/contrib/l/lscsoft-archive-
     echo "deb http://software.ligo.org/lscsoft/debian stretch contrib" > /etc/apt/sources.list.d/lscsoft.list && \
     echo "deb http://software.ligo.org/lscsoft/debian stretch-proposed contrib" > /etc/apt/sources.list.d/lscsoft-proposed.list && \
     echo "deb [trusted=yes] https://galahad.aei.mpg.de/lsc-amd64-stretch ./" > /etc/apt/sources.list.d/lscsoft-steffen.list
-
-RUN apt-get clean
