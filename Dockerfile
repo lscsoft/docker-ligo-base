@@ -6,7 +6,8 @@ LABEL name="LIGO Base - Enterprise Linux 7 - Testing" \
 
 # download and install standard repositories with LSCSoft Production enabled
 RUN yum -y install http://software.ligo.org/lscsoft/scientific/7/x86_64/production/l/lscsoft-production-config-1.3-1.el7.noarch.rpm && \
-    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash
+    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash && \
+    yum clean all
 
 # add osg repository
 RUN echo "[osg]" > /etc/yum.repos.d/osg.repo && \
@@ -38,9 +39,6 @@ RUN echo "[wandisco-git]" > /etc/yum.repos.d/wandisco-git.repo && \
 # fix git-lfs repository for scientific linux
 RUN sed -i s/scientific/el/g /etc/yum.repos.d/github_git-lfs.repo
 
-# install available updates
-RUN yum clean all && yum makecache && yum -y update
-
 # configure extra repositories
 RUN yum -y install \
       bash-completion \
@@ -50,3 +48,6 @@ RUN yum -y install \
       lscsoft-grid-config \
       lscsoft-testing-config && \
     yum clean all
+
+# install available updates
+RUN yum -y update && yum clean all
