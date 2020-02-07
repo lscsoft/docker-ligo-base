@@ -39,21 +39,21 @@ rebuild:lalsuite-dev:
 
 # packaging
 
-rebuild:stretch:
-  stage: rebuild
-  only:
-    - stretch@docker/base
-  trigger:
-    project: docker/packaging
-    branch: stretch
+# rebuild:stretch:
+#   stage: rebuild
+#   only:
+#     - stretch@docker/base
+#   trigger:
+#     project: docker/packaging
+#     branch: stretch
 
-rebuild:stretch-proposed:
-  stage: rebuild
-  only:
-    - stretch@docker/base
-  trigger:
-    project: docker/packaging
-    branch: stretch-proposed
+# rebuild:stretch-proposed:
+#   stage: rebuild
+#   only:
+#     - stretch@docker/base
+#   trigger:
+#     project: docker/packaging
+#     branch: stretch-proposed
 
 # ssh container
 
