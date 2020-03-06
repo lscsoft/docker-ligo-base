@@ -37,6 +37,16 @@ rebuild:lalsuite-dev:
     project: docker/lalsuite-dev
     branch: buster
 
+# ssh container
+
+rebuild:ssh:
+  stage: rebuild
+  only:
+    - branchesdocker/base
+  trigger:
+    project: docker/ssh
+    branch: buster
+
 # software container
 
 rebuild:software:
