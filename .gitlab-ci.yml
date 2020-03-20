@@ -5,6 +5,7 @@ variables:
 
 stages:
   - docker
+  - rebuild
 
 docker:build:
   stage: docker
@@ -25,3 +26,37 @@ docker:build:
 #
 # trigger rebuilds of downstream containers
 #
+
+# packaging
+
+rebuild:el8-production:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/packaging
+    branch: el8-production
+
+rebuild:el8-production-staging:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/packaging
+    branch: el8-production-staging
+
+rebuild:el8-testing:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/packaging
+    branch: el7-testing
+
+rebuild:el8-staging:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/packaging
+    branch: el8-staging
