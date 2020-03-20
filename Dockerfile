@@ -1,6 +1,6 @@
 FROM centos:8
 
-LABEL name="LIGO Base - Enterprise Linux 8" \
+LABEL name="LIGO Base - Enterprise Linux 8 - Testing" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
       support="Best Effort"
 
@@ -12,7 +12,8 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.r
 # install extra packages
 RUN dnf -y install \
       bash-completion \
-      epel-release && \
+      epel-release \
+      lscsoft-testing-config && \
     dnf clean all
 
 # install available updates
