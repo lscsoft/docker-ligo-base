@@ -6,7 +6,7 @@ LABEL name="LIGO Base - Enterprise Linux 8" \
 
 # enable extra repositories
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash && \
-    dnf install http://software.ligo.org/lscsoft/centos/8/production/x86_64/os/l/lscsoft-production-config-8-3.1.el8.noarch.rpm && \
+    dnf -y install http://software.ligo.org/lscsoft/centos/8/production/x86_64/os/l/lscsoft-production-config-8-3.1.el8.noarch.rpm && \
     dnf clean all
 
 # install extra packages
