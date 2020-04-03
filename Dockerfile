@@ -35,6 +35,7 @@ RUN yum -y install \
       bash-completion \
       yum-priorities \
       lscsoft-backports-config \
+      lscsoft-backports-debug-config \
       lscsoft-epel-config \
       lscsoft-grid-config \
       lscsoft-production-debug-config && \
