@@ -51,7 +51,7 @@ rebuild:el8-testing:
     - branches@docker/base
   trigger:
     project: docker/packaging
-    branch: el7-testing
+    branch: el8-testing
 
 rebuild:el8-staging:
   stage: rebuild
