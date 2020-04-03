@@ -14,7 +14,8 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.r
 # install extra packages
 RUN dnf -y install \
       bash-completion \
-      epel-release && \
+      epel-release \
+      lscsoft-production-debug-config && \
     dnf clean all
 
 # install available updates
