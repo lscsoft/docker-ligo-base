@@ -15,7 +15,9 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.r
 RUN dnf -y install \
       bash-completion \
       epel-release \
-      lscsoft-testing-config && \
+      lscsoft-production-debug-config \
+      lscsoft-testing-config \
+      lscsoft-testing-debug-config && \
     dnf clean all
 
 # install available updates
