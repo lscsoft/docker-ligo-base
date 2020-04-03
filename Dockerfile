@@ -36,7 +36,8 @@ RUN yum -y install \
       yum-priorities \
       lscsoft-backports-config \
       lscsoft-epel-config \
-      lscsoft-grid-config && \
+      lscsoft-grid-config \
+      lscsoft-production-debug-config && \
     yum clean all
 
 # install available updates
