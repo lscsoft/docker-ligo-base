@@ -19,15 +19,6 @@ RUN echo "[osg]" > /etc/yum.repos.d/osg.repo && \
     echo "gpgkey=http://repo.opensciencegrid.org/osg/RPM-GPG-KEY-OSG" >> /etc/yum.repos.d/osg.repo && \
     echo "exclude=*condor*" >> /etc/yum.repos.d/osg.repo
 
-# add lscsoft-backports repository
-RUN echo "[lscsoft-backports-testing]" > /etc/yum.repos.d/lscsoft-backports-testing.repo && \
-    echo "name = lscsoft-backports-testing" >> /etc/yum.repos.d/lscsoft-backports-testing.repo && \
-    echo "baseurl = http://software.ligo.org/lscsoft/scientific/\$releasever/\$basearch/backports-testing" >> /etc/yum.repos.d/lscsoft-backports-testing.repo && \
-    echo "enabled = 1" >> /etc/yum.repos.d/lscsoft-backports-testing.repo && \
-    echo "gpgcheck = 0" >> /etc/yum.repos.d/lscsoft-backports-testing.repo && \
-    echo "failovermethod = priority" >> /etc/yum.repos.d/lscsoft-backports-testing.repo && \
-    echo "priority = 97" >> /etc/yum.repos.d/lscsoft-backports-testing.repo
-
 # add WANdisco git repository
 RUN echo "[wandisco-git]" > /etc/yum.repos.d/wandisco-git.repo && \
     echo "name=Wandisco GIT Repository" >> /etc/yum.repos.d/wandisco-git.repo && \
@@ -44,6 +35,9 @@ RUN yum -y install \
       bash-completion \
       yum-priorities \
       lscsoft-backports-config \
+      lscsoft-backports-debug-config \
+      lscsoft-backports-testing-config \
+      lscsoft-backports-testing-debug-config \
       lscsoft-epel-config \
       lscsoft-grid-config \
       lscsoft-production-debug-config \\
