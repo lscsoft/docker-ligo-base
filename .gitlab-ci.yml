@@ -27,6 +27,16 @@ docker:build:
 # trigger rebuilds of downstream containers
 #
 
+# lint
+
+rebuild:lint:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/lint
+    branch: latest
+
 # packaging
 
 rebuild:el8-production:
