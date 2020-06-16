@@ -71,6 +71,22 @@ rebuild:el7-staging:
     project: docker/packaging
     branch: el7-staging
 
+rebuild:el7-resync-testing:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/packaging
+    branch: el7-resync-testing
+
+rebuild:el7-resync-staging:
+  stage: rebuild
+  only:
+    - branches@docker/base
+  trigger:
+    project: docker/packaging
+    branch: el7-resync-staging
+
 # ssh container
 
 rebuild:ssh:
