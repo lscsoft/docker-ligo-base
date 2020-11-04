@@ -11,6 +11,11 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.r
     dnf config-manager --set-enabled PowerTools && \
     dnf clean all
 
+# enable htcondor repo
+RUN curl -LO https://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor && \
+    rpm --import RPM-GPG-KEY-HTCondor && \
+    curl -Lo /etc/yum.repos.d/htcondor-stable-rhel8.repo https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-stable-rhel8.repo
+
 # install extra packages
 RUN dnf -y install \
       bash-completion \
