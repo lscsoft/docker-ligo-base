@@ -17,5 +17,5 @@ docker:build:
           docker login -u $QUAY_USER -p $QUAY_TOKEN quay.io
           docker tag  $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME quay.io/$BASE_REPOSITORY:$CI_COMMIT_REF_NAME
           docker push quay.io/$BASE_REPOSITORY:$CI_COMMIT_REF_NAME
-          docker logout
+          docker logout quay.io
         fi
