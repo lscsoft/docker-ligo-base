@@ -1,0 +1,21 @@
+image: docker:latest
+
+variables:
+  BASE_REPOSITORY: 'igwn/base'
+
+stages:
+  - docker
+  - rebuild
+
+docker:build:
+  stage: docker
+  script:
+    - docker build --no-cache --pull -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
+    - |
+        # push to quay.io
+        if [[ $CI_PROJECT_NAMESPACE == 'docker' ]]; then
+          docker login -u $QUAY_USER -p $QUAY_TOKEN
+          docker tag  $CI_REGISTRY_IMAGE:CI_COMMIT_REF_NAME quay.io/$BASE_REPOSITORY:$CI_COMMIT_REF_NAME
+          docker push quay.io/$BASE_REPOSITORY:$CI_COMMIT_REF_NAME
+          docker logout
+        fi
