@@ -22,6 +22,14 @@ docker:build:
           docker push $BASE_REPOSITORY:$CI_COMMIT_REF_NAME
           docker logout
         fi
+    - |
+        # push to quay.io
+        if [[ $CI_PROJECT_NAMESPACE == 'docker' ]]; then
+          docker login -u $QUAY_USER -p $QUAY_TOKEN quay.io
+          docker tag  $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME quay.io/$BASE_REPOSITORY:$CI_COMMIT_REF_NAME
+          docker push quay.io/$BASE_REPOSITORY:$CI_COMMIT_REF_NAME
+          docker logout quay.io
+        fi
 
 #
 # trigger rebuilds of downstream containers
