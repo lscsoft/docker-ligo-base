@@ -45,3 +45,6 @@ RUN wget http://software.ligo.org/lscsoft/debian/pool/contrib/l/lscsoft-archive-
     rm -f lscsoft-archive-keyring_2016.06.20-2_all.deb && \
     echo "deb http://software.ligo.org/gridtools/debian stretch main" > /etc/apt/sources.list.d/gridtools.list && \
     echo "deb http://software.ligo.org/lscsoft/debian stretch contrib" > /etc/apt/sources.list.d/lscsoft.list
+
+# install available updates
+RUN apt-get update && apt-get --assume-yes upgrade && apt-get clean
