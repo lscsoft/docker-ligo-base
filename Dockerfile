@@ -16,6 +16,16 @@ RUN curl -LO https://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor && \
     rpm --import RPM-GPG-KEY-HTCondor && \
     curl -Lo /etc/yum.repos.d/htcondor-stable-rhel8.repo https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-stable-rhel8.repo
 
+# add osg repository
+RUN echo "[osg]" > /etc/yum.repos.d/osg.repo && \
+    echo "name=OSG Software for Enterprise Linux 8 - \$basearch" >> /etc/yum.repos.d/osg.repo && \
+    echo "baseurl=https://repo.opensciencegrid.org/osg/3.5/el8/release/\$basearch" >> /etc/yum.repos.d/osg.repo && \
+    echo "failovermethod=priority" >> /etc/yum.repos.d/osg.repo && \
+    echo "enabled=1" >> /etc/yum.repos.d/osg.repo && \
+    echo "gpgcheck=1" >> /etc/yum.repos.d/osg.repo && \
+    echo "gpgkey=http://repo.opensciencegrid.org/osg/RPM-GPG-KEY-OSG" >> /etc/yum.repos.d/osg.repo && \
+    echo "exclude=*condor*" >> /etc/yum.repos.d/osg.repo
+
 # install extra packages
 RUN dnf -y install \
       bash-completion \
