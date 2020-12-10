@@ -11,6 +11,16 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.r
     dnf config-manager --set-enabled PowerTools && \
     dnf clean all
 
+# add osg repository
+RUN echo "[osg]" > /etc/yum.repos.d/osg.repo && \
+    echo "name=OSG Software for Enterprise Linux 8 - \$basearch" >> /etc/yum.repos.d/osg.repo && \
+    echo "baseurl=https://repo.opensciencegrid.org/osg/3.5/el8/release/\$basearch" >> /etc/yum.repos.d/osg.repo && \
+    echo "failovermethod=priority" >> /etc/yum.repos.d/osg.repo && \
+    echo "enabled=1" >> /etc/yum.repos.d/osg.repo && \
+    echo "gpgcheck=1" >> /etc/yum.repos.d/osg.repo && \
+    echo "gpgkey=http://repo.opensciencegrid.org/osg/RPM-GPG-KEY-OSG" >> /etc/yum.repos.d/osg.repo && \
+    echo "exclude=*condor*" >> /etc/yum.repos.d/osg.repo
+
 # install extra packages
 RUN dnf -y install \
       bash-completion \
