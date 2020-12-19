@@ -40,7 +40,7 @@ RUN yum -y install \
       lscsoft-backports-testing-debug-config \
       lscsoft-epel-config \
       lscsoft-grid-config \
-      lscsoft-production-debug-config \\
+      lscsoft-production-debug-config \
       lscsoft-testing-config \
       lscsoft-testing-debug-config && \
     yum clean all
