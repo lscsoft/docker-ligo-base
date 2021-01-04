@@ -35,7 +35,7 @@ rebuild:lalsuite-dev:
     - branches@docker/base
   trigger:
     project: docker/lalsuite-dev
-    branch: buster
+    branch: bullseye
 
 # ssh container
 
@@ -45,7 +45,7 @@ rebuild:ssh:
     - branchesdocker/base
   trigger:
     project: docker/ssh
-    branch: buster
+    branch: bullseye
 
 # software container
 
@@ -55,4 +55,4 @@ rebuild:software:
     - branches@docker/base
   trigger:
     project: docker/software
-    branch: buster
+    branch: bullseye

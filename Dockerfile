@@ -1,6 +1,6 @@
-FROM debian:buster
+FROM debian:bullseye
 
-LABEL name="LIGO Base - Debian Buster" \
+LABEL name="LIGO Base - Debian Bullseye" \
       maintainer="Adam Mercer <adam.mercer@ligo.org>" \
       support="Unsupported"
 
@@ -26,5 +26,5 @@ RUN wget http://software.ligo.org/lscsoft/debian/pool/contrib/l/lscsoft-archive-
     apt --assume-yes install ./lscsoft-archive-keyring_2016.06.20-2_all.deb && \
     rm -f lscsoft-archive-keyring_2016.06.20-2_all.deb
 
-RUN echo "deb http://software.ligo.org/gridtools/debian buster main" > /etc/apt/sources.list.d/gridtools.list && \
-    echo "deb [trusted=yes] https://galahad.aei.mpg.de/lsc-amd64-buster ./" > /etc/apt/sources.list.d/lscsoft.list
+RUN echo "deb http://software.ligo.org/gridtools/debian bullseye main" > /etc/apt/sources.list.d/gridtools.list && \
+    echo "deb [trusted=yes] https://galahad.aei.mpg.de/lsc-amd64-bullseye ./" > /etc/apt/sources.list.d/lscsoft.list
