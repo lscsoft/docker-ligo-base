@@ -27,32 +27,32 @@ docker:build:
 # trigger rebuilds of downstream containers
 #
 
-# lalsuite-dev
-
-rebuild:lalsuite-dev:
-  stage: rebuild
-  only:
-    - branches@docker/base
-  trigger:
-    project: docker/lalsuite-dev
-    branch: bullseye
-
-# ssh container
-
-rebuild:ssh:
-  stage: rebuild
-  only:
-    - branchesdocker/base
-  trigger:
-    project: docker/ssh
-    branch: bullseye
-
-# software container
-
-rebuild:software:
-  stage: rebuild
-  only:
-    - branches@docker/base
-  trigger:
-    project: docker/software
-    branch: bullseye
+## lalsuite-dev
+#
+#rebuild:lalsuite-dev:
+#  stage: rebuild
+#  only:
+#    - branches@docker/base
+#  trigger:
+#    project: docker/lalsuite-dev
+#    branch: bullseye
+#
+## ssh container
+#
+#rebuild:ssh:
+#  stage: rebuild
+#  only:
+#    - branchesdocker/base
+#  trigger:
+#    project: docker/ssh
+#    branch: bullseye
+#
+## software container
+#
+#rebuild:software:
+#  stage: rebuild
+#  only:
+#    - branches@docker/base
+#  trigger:
+#    project: docker/software
+#    branch: bullseye
