@@ -1,8 +1,8 @@
 FROM centos:8
 
-LABEL name="LIGO Base - Enterprise Linux 8" \
-      maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      support="Best Effort"
+LABEL name="LIGO Base - Enterprise Linux 8"
+LABEL maintainer="Adam Mercer <adam.mercer@ligo.org>"
+LABEL support="Best Effort"
 
 # enable extra repositories
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash && \
