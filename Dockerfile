@@ -31,8 +31,12 @@ RUN dnf -y install \
       bash-completion \
       epel-release \
       lscsoft-production-debug-config \
+      lscsoft-backports-config \
+      lscsoft-backports-debug-config \
       lscsoft-testing-config \
-      lscsoft-testing-debug-config && \
+      lscsoft-testing-debug-config \
+      lscsoft-backports-testing-config \
+      lscsoft-backports-testing-debug-config && \
     dnf clean all
 
 # install available updates
