@@ -30,7 +30,9 @@ RUN echo "[osg]" > /etc/yum.repos.d/osg.repo && \
 RUN dnf -y install \
       bash-completion \
       epel-release \
-      lscsoft-production-debug-config && \
+      lscsoft-production-debug-config \
+      lscsoft-backports-config \
+      lscsoft-backports-debug-config && \
     dnf clean all
 
 # install available updates
