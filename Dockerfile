@@ -4,5 +4,4 @@ LABEL name="LIGO Base - Miniconda"
 LABEL maintainer="Duncan Macleod <duncan.macleod@ligo.org>"
 LABEL support="Best Effort"
 
-RUN /opt/conda/bin/conda config --system --prepend channels conda-forge && \
-    /opt/conda/bin/conda config --system --append channels igwn
+RUN /opt/conda/bin/conda config --system --prepend channels conda-forge
