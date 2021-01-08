@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:4.7.10
+FROM continuumio/miniconda3:4.9.2
 
 LABEL name="LIGO Base - Miniconda"
 LABEL maintainer="Duncan Macleod <duncan.macleod@ligo.org>"
