@@ -1,8 +1,8 @@
 FROM debian:bullseye
 
-LABEL name="LIGO Base - Debian Bullseye" \
-      maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      support="Unsupported"
+LABEL name="LIGO Base - Debian Bullseye"
+LABEL maintainer="Adam Mercer <adam.mercer@ligo.org>"
+LABEL support="Unsupported"
 
 # ensure non-interactive debian installation
 ENV DEBIAN_FRONTEND noninteractive
