@@ -1,8 +1,8 @@
 FROM debian:buster
 
-LABEL name="LIGO Base - Debian Buster" \
-      maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      support="Unsupported"
+LABEL name="LIGO Base - Debian Buster"
+LABEL maintainer="Adam Mercer <adam.mercer@ligo.org>"
+LABEL support="Unsupported"
 
 # ensure non-interactive debian installation
 ENV DEBIAN_FRONTEND noninteractive
