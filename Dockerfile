@@ -1,8 +1,8 @@
 FROM debian:stretch
 
-LABEL name="LIGO Base - Debian Stretch" \
-      maintainer="Adam Mercer <adam.mercer@ligo.org>" \
-      support="Berst Effort"
+LABEL name="LIGO Base - Debian Stretch"
+LABEL maintainer="Adam Mercer <adam.mercer@ligo.org>"
+LABEL support="Best Effort"
 
 # ensure non-interactive debian installation
 ENV DEBIAN_FRONTEND noninteractive
