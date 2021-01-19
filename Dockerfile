@@ -46,4 +46,4 @@ RUN wget http://software.ligo.org/lscsoft/debian/pool/contrib/l/lscsoft-archive-
     echo "deb http://software.ligo.org/gridtools/debian stretch main" > /etc/apt/sources.list.d/gridtools.list && \
     echo "deb http://software.ligo.org/lscsoft/debian stretch contrib" > /etc/apt/sources.list.d/lscsoft.list && \
     echo "deb http://software.ligo.org/lscsoft/debian stretch-proposed contrib" > /etc/apt/sources.list.d/lscsoft-proposed.list && \
-    echo "deb [trusted=yes] https://galahad.aei.mpg.de/lsc-amd64-stretch ./" > /etc/apt/sources.list.d/lscsoft-steffen.list
+    echo "deb [trusted=yes] https://hypatia.aei.mpg.de/lsc-amd64-stretch ./" > /etc/apt/sources.list.d/lscsoft-steffen.list
