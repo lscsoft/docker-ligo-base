@@ -63,16 +63,6 @@ rebuild:lalsuite-dev:
 #     project: docker/packaging
 #     branch: stretch-proposed
 
-# ssh container
-
-rebuild:ssh:
-  stage: rebuild
-  only:
-    - stretch@docker/base
-  trigger:
-    project: docker/ssh
-    branch: stretch
-
 # software container
 
 rebuild:software:
